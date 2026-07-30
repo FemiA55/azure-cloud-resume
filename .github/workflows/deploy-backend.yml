@@ -34,5 +34,5 @@ jobs:
       - name: Run Azure Functions Action
         uses: Azure/functions-action@v1
         with:
-          app-name: 'Your-Function-App-Name' # Replace this with your actual Azure Function App name
+          app-name: 'fe1resumefunction' # Replace this with your actual Azure Function App name
           package: './azure-cloud-backend'
