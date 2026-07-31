@@ -31,3 +31,4 @@ jobs:
           app-name: 'fe1resumefunction'
           package: 'release.zip'
           publish-profile: ${{ secrets.AZURE_FUNCTION_PUBLISH_PROFILE }}
+          
