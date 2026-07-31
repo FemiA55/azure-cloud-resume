@@ -1,13 +1,15 @@
 import azure.functions as func
 import logging
 import os
-from azure.cosmos import CosmosClient
-from azure.identity import DefaultAzureCredential
+# from azure.cosmos import CosmosClient
+# from azure.identity import DefaultAzureCredential
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 @app.route(route="GetResumeCount")
 def GetResumeCount(req: func.HttpRequest) -> func.HttpResponse:
+    from azure.cosmos import CosmosClient
+    from azure.identity import DefaultAzureCredential
     logging.info('Python HTTP trigger function processed a request.')
 
     try:
