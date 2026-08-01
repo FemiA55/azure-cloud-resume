@@ -2,13 +2,19 @@ window.addEventListener('DOMContentLoaded', () => {
     getVisitorCount();
 });
 
-const functionApiUrl = 'https://fe1resumefunction.azurewebsites.net/api/GetResumeCounter';
+const functionApiUrl = 'https://fe1resumefunction.azurewebsites.net/api/GetResumeCount';
 
 function getVisitorCount() {
     fetch(functionApiUrl)
-        .then(response => response.json())
+        .then(response => response.text()) // Use text() to safely handle raw numbers/text
         .then(data => {
-            document.getElementById('counter').innerText = data.count;
+            // Try parsing as JSON first; fall back to plain text/number
+            try {
+                const parsed = JSON.parse(data);
+                document.getElementById('counter').innerText = parsed.count ?? parsed;
+            } catch {
+                document.getElementById('counter').innerText = data;
+            }
         })
         .catch(error => {
             console.error('Error fetching visitor count:', error);
